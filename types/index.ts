@@ -40,6 +40,7 @@ export interface GenerationRequest {
   occasionType: OccasionType;
   occasionName: string;
   extraContext: string;
+  userApiKey?: string;
 }
 
 export interface OutputField {

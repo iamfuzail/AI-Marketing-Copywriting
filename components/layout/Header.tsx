@@ -1,9 +1,9 @@
-'use client';
-
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Sparkles, CalendarDays, History, Building2, Sun, Moon } from 'lucide-react';
+import { Sparkles, CalendarDays, History, Building2, Sun, Moon, Settings } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
+import { SettingsModal } from './SettingsModal';
 import { cn } from '@/lib/utils';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -20,6 +20,7 @@ const NAV_ITEMS = [
 export function Header() {
   const pathname = usePathname();
   const { theme, toggle } = useTheme();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <header
@@ -95,6 +96,26 @@ export function Header() {
         {/* Right side */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button
+            onClick={() => setShowSettings(true)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 38,
+              height: 38,
+              borderRadius: 10,
+              border: '1px solid var(--border-default)',
+              background: 'var(--bg-surface)',
+              color: 'var(--text-secondary)',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+            }}
+            aria-label="Settings"
+          >
+            <Settings size={18} />
+          </button>
+
+          <button
             onClick={toggle}
             style={{
               display: 'flex',
@@ -133,6 +154,8 @@ export function Header() {
           </div>
         </div>
       </div>
+
+      <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
       <style jsx>{`
         .nav-tab:hover {
