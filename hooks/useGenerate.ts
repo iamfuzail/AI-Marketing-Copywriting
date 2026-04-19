@@ -1,15 +1,12 @@
 import { useState, useCallback } from 'react';
 import type { GenerationRequest, OutputField } from '@/types';
 import { parseOutputFields } from '@/lib/prompts';
-import { useSettingsStore } from '@/store/settingsStore';
 
 export function useGenerate() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [streamText, setStreamText] = useState('');
   const [fields, setFields] = useState<OutputField[]>([]);
   const [error, setError] = useState<string | null>(null);
-  
-  const userApiKey = useSettingsStore((s) => s.apiKey);
 
   const generate = useCallback(async (request: GenerationRequest) => {
     setIsGenerating(true);
@@ -21,7 +18,7 @@ export function useGenerate() {
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...request, userApiKey }),
+        body: JSON.stringify(request),
       });
 
       if (!res.ok) {

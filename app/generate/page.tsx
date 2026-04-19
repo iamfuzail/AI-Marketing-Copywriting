@@ -39,6 +39,7 @@ export default function GeneratePage() {
     const params = new URLSearchParams(window.location.search);
     const occasion = params.get('occasion');
     if (occasion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOccasionName(occasion);
       if (params.get('auto') === 'true') {
         setAutoStart(true);
@@ -70,6 +71,7 @@ export default function GeneratePage() {
 
   useEffect(() => {
     if (autoStart && occasionName && profile.name) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       handleGenerate();
       setAutoStart(false);
     }
@@ -102,7 +104,7 @@ export default function GeneratePage() {
     
     // Calculate publishing date (e.g. 3 days before festival)
     const year = 2026;
-    let d = new Date(year, event.month, event.day);
+    const d = new Date(year, event.month, event.day);
     const daysBefore = event.priority === 'high' ? 7 : event.priority === 'medium' ? 3 : 1;
     d.setDate(d.getDate() - daysBefore);
     

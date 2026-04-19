@@ -3,16 +3,17 @@ import { buildPrompt } from '@/lib/prompts';
 import type { GenerationRequest } from '@/types';
 
 export async function POST(req: Request) {
+  const apiKey = process.env.GEMINI_API_KEY;
+
+  if (!apiKey) {
+    return Response.json(
+      { error: 'GEMINI_API_KEY is not configured. Add it to your .env.local file.' },
+      { status: 500 }
+    );
+  }
+
   try {
     const body: GenerationRequest = await req.json();
-    const apiKey = body.userApiKey || process.env.GEMINI_API_KEY;
-
-    if (!apiKey) {
-      return Response.json(
-        { error: 'Gemini API Key missing. Please provide it in the input settings or contact site admin.' },
-        { status: 401 }
-      );
-    }
     const prompt = buildPrompt(body);
 
     const genAI = new GoogleGenerativeAI(apiKey);
