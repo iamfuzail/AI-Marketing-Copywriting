@@ -55,16 +55,8 @@ export default function BrandPage() {
 
   return (
     <div className="hero-bg" style={{ minHeight: 'calc(100vh - 64px)' }}>
-      <div
-        style={{
-          maxWidth: 1440,
-          margin: '0 auto',
-          padding: '28px 32px',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        {/* Header */}
+      <div className="app-container" style={{ display: 'block' }}>
+        {/* Page Header */}
         <div className="animate-fade-up stagger-1" style={{ opacity: 0, marginBottom: 28 }}>
           <h1
             style={{

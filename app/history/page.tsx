@@ -53,15 +53,7 @@ export default function HistoryPage() {
 
   return (
     <div className="hero-bg" style={{ minHeight: 'calc(100vh - 64px)' }}>
-      <div
-        style={{
-          maxWidth: 1440,
-          margin: '0 auto',
-          padding: '28px 32px',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
+      <div className="app-container" style={{ display: 'block' }}>
         {/* Header */}
         <div
           className="animate-fade-up stagger-1"

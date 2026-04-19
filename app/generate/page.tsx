@@ -144,28 +144,9 @@ export default function GeneratePage() {
 
   return (
     <div className="hero-bg" style={{ minHeight: 'calc(100vh - 64px)' }}>
-      <div
-        style={{
-          maxWidth: 1440,
-          margin: '0 auto',
-          padding: '28px 32px',
-          display: 'flex',
-          gap: 28,
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
+      <div className="app-container">
         {/* ═══════ LEFT PANEL ═══════ */}
-        <div
-          style={{
-            width: 380,
-            flexShrink: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
-          }}
-          className="left-panel"
-        >
+        <div className="sidebar left-panel">
           {/* Brand Panel */}
           <div className="animate-fade-up stagger-1" style={{ opacity: 0 }}>
             <BrandPanel />
@@ -201,7 +182,7 @@ export default function GeneratePage() {
         </div>
 
         {/* ═══════ RIGHT PANEL ═══════ */}
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="content-area">
           {/* Tab bar */}
           <div
             style={{
@@ -412,13 +393,7 @@ export default function GeneratePage() {
         </div>
       </div>
 
-      <style jsx>{`
-        @media (max-width: 900px) {
-          .left-panel {
-            width: 100% !important;
-          }
-        }
-      `}</style>
+      </div>
     </div>
   );
 }

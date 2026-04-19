@@ -91,8 +91,8 @@ export default function CalendarPage() {
           zIndex: 1,
         }}
       >
-        {/* Page header */}
-        <div className="animate-fade-up stagger-1" style={{ opacity: 0, marginBottom: 28 }}>
+        {/* ═══════ LEFT PANEL ═══════ */}
+        <div className="sidebar left-panel sticky-sidebar animate-fade-up stagger-1" style={{ opacity: 0, marginBottom: 28 }}>
           <h1
             style={{
               fontFamily: 'var(--font-display)',
@@ -189,13 +189,11 @@ export default function CalendarPage() {
           </button>
         </div>
 
-        <div style={{ display: 'flex', gap: 24 }}>
+        <div className="app-container" style={{ padding: 0, maxWidth: 'none' }}>
           {/* Calendar grid */}
-          <div
-            className="animate-fade-up stagger-3"
+          <div className="content-area animate-fade-up stagger-3"
             style={{
               opacity: 0,
-              flex: 1,
               background: 'var(--bg-surface)',
               border: '1px solid var(--border-default)',
               borderRadius: 14,
@@ -294,8 +292,8 @@ export default function CalendarPage() {
                         });
                       }
                     }}
+                    className="calendar-day-btn"
                     style={{
-                      minHeight: 80,
                       borderRadius: 10,
                       border: `1px solid ${isToday ? 'var(--accent-saffron)' : hasHigh ? 'rgba(255,107,53,0.35)' : hasEvent ? 'rgba(255,184,48,0.30)' : 'var(--border-faint)'}`,
                       background: hasHigh ? 'rgba(255,107,53,0.05)' : hasEvent ? 'rgba(255,184,48,0.03)' : 'var(--bg-surface)',
@@ -374,17 +372,12 @@ export default function CalendarPage() {
           {/* Slide-in detail panel */}
           {selectedEvent && (
             <div
-              className="animate-fade-up"
+              className="sidebar sticky-sidebar animate-fade-up"
               style={{
-                width: 340,
-                flexShrink: 0,
                 background: 'var(--bg-surface)',
                 border: '1px solid var(--border-default)',
                 borderRadius: 14,
                 padding: 24,
-                alignSelf: 'flex-start',
-                position: 'sticky',
-                top: 92,
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>

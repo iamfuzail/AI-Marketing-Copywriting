@@ -32,10 +32,10 @@ export function Header() {
       }}
     >
       <div
+        className="header-inner"
         style={{
           maxWidth: 1440,
           margin: '0 auto',
-          padding: '0 32px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -59,38 +59,41 @@ export function Header() {
         </Link>
 
         {/* Nav Tabs */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          {NAV_ITEMS.map((item) => {
-            const Icon = iconMap[item.icon];
-            const isActive = pathname === item.href || (item.href === '/generate' && pathname === '/');
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'nav-tab',
-                  isActive && 'nav-tab-active'
-                )}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: '8px 16px',
-                  borderRadius: 10,
-                  fontSize: 14,
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  transition: 'all 0.15s ease',
-                  color: isActive ? 'var(--accent-saffron)' : 'var(--text-secondary)',
-                  background: isActive ? 'var(--accent-glow)' : 'transparent',
-                }}
-              >
-                <Icon size={18} strokeWidth={1.5} />
-                <span className="nav-label">{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="mobile-scroll-x" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '0 8px' }}>
+            {NAV_ITEMS.map((item) => {
+              const Icon = iconMap[item.icon];
+              const isActive = pathname === item.href || (item.href === '/generate' && pathname === '/');
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'nav-tab',
+                    isActive && 'nav-tab-active'
+                  )}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '8px 16px',
+                    borderRadius: 10,
+                    fontSize: 14,
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                    transition: 'all 0.15s ease',
+                    color: isActive ? 'var(--accent-saffron)' : 'var(--text-secondary)',
+                    background: isActive ? 'var(--accent-glow)' : 'transparent',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <Icon size={18} strokeWidth={1.5} />
+                  <span className="nav-label">{item.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
         {/* Right side */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

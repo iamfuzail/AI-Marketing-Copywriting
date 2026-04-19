@@ -338,3 +338,95 @@ textarea {
 [data-theme="light"] .badge-seasonal { background: rgba(255,184,48,0.12);  color: #B07800; }
 [data-theme="light"] .badge-national { background: rgba(0,201,167,0.10);   color: #008F74; }
 [data-theme="light"] .badge-topical  { background: rgba(56,189,248,0.10);  color: #0284C7; }
+
+/* ═══════════════════════════════════════════
+   10. RESPONSIVE UTILITIES
+   ═══════════════════════════════════════════ */
+.app-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.sticky-sidebar {
+  align-self: flex-start;
+  position: sticky;
+  top: 92px;
+}
+
+.calendar-day-btn {
+  min-height: 80px;
+}
+
+.header-inner {
+  padding: 0 32px;
+}
+
+@media (max-width: 1100px) {
+  .app-container {
+    flex-direction: column;
+    padding: 20px 16px;
+    gap: 24px;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    padding: 0 16px;
+  }
+
+  .app-container {
+    padding: 16px 12px;
+  }
+
+  .sticky-sidebar {
+    position: static !important;
+    top: auto !important;
+  }
+
+  .calendar-day-btn {
+    min-height: 50px !important;
+    padding: 4px !important;
+  }
+
+  .calendar-day-btn > span:first-child {
+    font-size: 10px !important;
+  }
+  
+  .calendar-day-btn div {
+    display: none !important; /* Hide event names on mobile grid, just show dot/color */
+  }
+
+  /* Hide logo text on very small screens to save space */
+  @media (max-width: 400px) {
+    .header-inner Link span:first-child {
+      display: none;
+    }
+  }
+}
+
